@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Russian Word Explorer</title>
+    <link rel="icon" href="logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Cyrillic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="logo.png" alt="Project Logo" class="navbar-logo">
+            <a href="#" class="navbar-brand">Russian Word Explorer</a>
+            <ul class="navbar-menu">
+                <li><a href="#"><span><i class="fas fa-home"></i></span> Home</a></li>
+                <li><a href="#"><span><i class="fas fa-book-open"></i></span> Vocabulary</a></li>
+                <li><a href="#"><span><i class="fas fa-info-circle"></i></span> About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-image-container">
+            <img src="hero-background.jpg" alt="Hero Image" class="hero-image">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Learn Russian Words Interactively</h1>
+            <p>Explore basic Russian vocabulary with translations, images, and pronunciations.</p>
+            <a href="#word-cards" class="hero-button">Start Learning</a>
+        </div>
+    </section>
+
+    <div class="container" id="word-cards">
+        <div class="description">
+            <p class="russian-text">
+                Добро пожаловать в "Исследователь Русских Слов"! Это интерактивное приложение поможет вам выучить основные русские слова, показывая их перевод, картинку и произношение.
+            </p>
+            <p class="english-text">
+                Welcome to "Russian Word Explorer"! This interactive application will help you learn basic Russian words by showing their translation, image, and pronunciation.
+            </p>
+        </div>
+        <div class="word-card" data-russian="Привет" data-english="Hello" data-pronunciation="Pree-vyet" data-image="hello.jpg" data-audio="hello.mp3">
+            <div class="word">Привет</div>
+            <div class="translation"></div>
+            <img class="word-image" src="" alt="Word Image">
+            <button class="audio-button"><i class="fas fa-volume-up"></i></button>
+            <audio class="word-audio" src=""></audio>
+        </div>
+        <div class="word-card" data-russian="Книга" data-english="Book" data-pronunciation="Knee-ga" data-image="book.jpg" data-audio="book.mp3">
+            <div class="word">Книга</div>
+            <div class="translation"></div>
+            <img class="word-image" src="" alt="Word Image">
+            <button class="audio-button"><i class="fas fa-volume-up"></i></button>
+            <audio class="word-audio" src=""></audio>
+        </div>
+        <div class="word-card" data-russian="Собака" data-english="Dog" data-pronunciation="Sa-bah-ka" data-image="dog.jpg" data-audio="dog.mp3">
+            <div class="word">Собака</div>
+            <div class="translation"></div>
+            <img class="word-image" src="" alt="Word Image">
+            <button class="audio-button"><i class="fas fa-volume-up"></i></button>
+            <audio class="word-audio" src=""></audio>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

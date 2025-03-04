@@ -1,0 +1,228 @@
+body {
+    font-family: 'Noto Sans Cyrillic', sans-serif;
+    margin: 0;
+    background-color: #0039A6;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #fafafa;
+    padding: 15px 0;
+}
+
+.navbar-container {
+    width: 95%; /* Adjust width to get logo closer to margin */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start; /* Align items to the start */
+    align-items: center;
+}
+
+.navbar-logo {
+    height: 40px;
+    margin-right: 5px; /* Reduce margin */
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0039A6; /* Blue text */
+    text-decoration: none;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Push menu to the right */
+}
+
+.navbar-menu li {
+    margin-left: 25px; /* Increase margin for spacing */
+}
+
+.navbar-menu a {
+    color: #0039A6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 1em; /* return to normal size */
+    display: flex; /* use flex to align icon and text */
+    align-items: center; /* vertically center icon and text */
+}
+
+.navbar-menu a span {
+    margin-right: 8px; /* Add spacing between icon and text */
+    font-size: 1.2em; /* icon size */
+}
+
+.navbar-menu a:hover {
+    color: #888;
+}
+
+/* Hero Section */
+.hero {
+    position: relative; /* Needed for absolute positioning of the image */
+    background: linear-gradient(rgba(0, 57, 166, 0.8), rgba(0, 57, 166, 0.8)); /* Dark overlay */
+    text-align: center;
+    padding: 100px 0;
+    overflow: hidden; /* Prevents image overflow */
+}
+
+.hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent white */
+    z-index: 1;
+}
+
+.hero-content {
+    width: 80%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-button {
+    background-color: #FFFFFF;
+    color: #0039A6;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #CCC;
+}
+
+/* Container and Word Cards */
+.container {
+    width: 80%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #D52E33;
+}
+
+.word-card {
+    position: relative;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #0039A6;
+}
+
+.word-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.word {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.translation {
+    text-align: center;
+    transition: opacity 0.3s ease, height 0.3s ease;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.word-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto 0;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.5s ease, height 0.3s ease;
+    height: 0;
+    overflow: hidden;
+}
+
+/* Audio Button */
+.audio-button {
+    position: absolute;
+    bottom: 2px; /* Position at the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #FFFFFF;
+    color: #0039A6;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.audio-button i {
+    font-size: 18px;
+}
+
+.word-image.active + .audio-button {
+    opacity: 1;
+}
+
+/* Description Section */
+.description {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.russian-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.english-text {
+    font-size: 16px;
+    color: #CCC;
+}
