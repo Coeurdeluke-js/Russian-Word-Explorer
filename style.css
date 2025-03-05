@@ -11,27 +11,30 @@ body {
 .navbar {
     background-color: #fafafa;
     padding: 15px 0;
+    position: relative;
 }
 
 .navbar-container {
-    width: 95%; /* Adjust width to get logo closer to margin */
+    width: 95%;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: flex-start; /* Align items to the start */
     align-items: center;
+    justify-content: space-between;
 }
 
 .navbar-logo {
     height: 40px;
-    margin-right: 5px; /* Reduce margin */
+    margin-right: 10px;
 }
 
 .navbar-brand {
     font-size: 24px;
     font-weight: bold;
-    color: #0039A6; /* Blue text */
+    color: #0039A6;
     text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-menu {
@@ -39,38 +42,48 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
-    margin-left: auto; /* Push menu to the right */
+    margin-left: auto;
 }
 
 .navbar-menu li {
-    margin-left: 25px; /* Increase margin for spacing */
+    margin-left: 25px;
 }
 
 .navbar-menu a {
     color: #0039A6;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 1em; /* return to normal size */
-    display: flex; /* use flex to align icon and text */
-    align-items: center; /* vertically center icon and text */
+    font-size: 1em;
+    display: flex;
+    align-items: center;
 }
 
 .navbar-menu a span {
-    margin-right: 8px; /* Add spacing between icon and text */
-    font-size: 1.2em; /* icon size */
+    margin-right: 8px;
+    font-size: 1.2em;
 }
 
 .navbar-menu a:hover {
     color: #888;
 }
 
+/* Hamburger Menu */
+.hamburger-menu {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    color: #0039A6;
+    cursor: pointer;
+    display: none;
+}
+
 /* Hero Section */
 .hero {
-    position: relative; /* Needed for absolute positioning of the image */
-    background: linear-gradient(rgba(0, 57, 166, 0.8), rgba(0, 57, 166, 0.8)); /* Dark overlay */
+    position: relative;
+    background: linear-gradient(rgba(0, 57, 166, 0.8), rgba(0, 57, 166, 0.8));
     text-align: center;
     padding: 100px 0;
-    overflow: hidden; /* Prevents image overflow */
+    overflow: hidden;
 }
 
 .hero-image-container {
@@ -94,7 +107,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent white */
+    background-color: rgba(0, 0, 0, 0.4);
     z-index: 1;
 }
 
@@ -153,6 +166,7 @@ h1 {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: #0039A6;
+    overflow: hidden;
 }
 
 .word-card:hover {
@@ -169,125 +183,158 @@ h1 {
 
 .translation {
     text-align: center;
-    transition: opacity 0.3s ease, height 0.3s ease;
+    max-height: 0;
     opacity: 0;
-    height: 0;
     overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .word-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 10px auto 0;
-    border-radius: 4px;
+    max-height: 0;
     opacity: 0;
-    transition: opacity 0.5s ease, height 0.3s ease;
-    height: 0;
     overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 10px;
 }
 
-/* Audio Button */
 .audio-button {
     position: absolute;
-    bottom: 2px; /* Position at the bottom */
+    bottom: 10px;
     left: 50%;
-    transform: translateX(-50%); /* Center horizontally */
-    background-color: #FFFFFF;
-    color: #0039A6;
-    padding: 10px;
+    transform: translateX(-50%);
+    background-color: #0039A6;
+    color: #FFFFFF;
     border: none;
     border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.audio-button i {
-    font-size: 18px;
-}
-
-.word-image.active + .audio-button {
+.word-card.expanded .translation,
+.word-card.expanded .word-image,
+.word-card.expanded .audio-button {
+    max-height: 500px;
     opacity: 1;
 }
 
-/* Description Section */
-.description {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.russian-text {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.english-text {
-    font-size: 16px;
-    color: #CCC;
-}
-
-/* Media Queries for Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Add padding to prevent content from being hidden behind fixed navbar */
+    }
+
+    .navbar {
+        position: fixed; /* Make navbar fixed */
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 15px;
+        background-color: #fff; /* Add background color to ensure it covers content */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: add subtle shadow */
+        z-index: 1001; /* Ensure navbar is above other content */
+        transition: transform 0.3s ease; /* Smooth transition for sliding */
+    }
+
     .navbar-container {
-        flex-direction: column; /* Stack logo/brand and menu */
-        align-items: flex-start; /* Align to the left on mobile */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        z-index: 1002; /* Ensure hamburger icon is above the navbar */
+        font-size: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .navbar-logo {
+        height: 60px;
+        margin-right: 10px;
     }
 
     .navbar-brand {
-        margin-bottom: 10px; /* Add space below brand */
+        font-size: 0; /* Hide original text */
+        display: inline-block;
+        position: absolute;
+        left: calc(60px + 20px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .navbar-brand::before {
+        content: "Russian";
+        display: block;
+        font-size: 16px;
+        line-height: 1.2;
+        color: #333;
+    }
+
+    .navbar-brand::after {
+        content: "Word Explorer";
+        display: block;
+        font-size: 1rem;
+        line-height: 1.2;
+        color: #333;
     }
 
     .navbar-menu {
-        flex-direction: column; /* Stack menu items vertically */
-        align-items: flex-start; /* Align menu items to the left */
-        position: static; /* Remove absolute positioning */
-        background-color: transparent; /* Remove background */
-        padding: 0; /* Remove padding */
-        border-radius: 0; /* Remove border radius */
-        box-shadow: none; /* Remove box shadow */
-        display: none; /* Initially hidden */
-        width: 100%; /* Full width */
-        margin-left: 0; /* Remove margin */
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        flex-direction: row; /* Changed to column for better mobile layout */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        opacity: 0; /* Start with menu hidden */
+        visibility: hidden; /* Ensure it's not clickable */
+        transform: translateY(-20px); /* Slight upward translation */
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
     }
 
     .navbar-menu.show {
-        display: flex; /* Show menu when active */
+        display: flex;
+        opacity: 1; /* Fade in */
+        visibility: visible; /* Make visible and clickable */
+        transform: translateY(0); /* Move to original position */
     }
 
     .navbar-menu li {
-        margin-left: 0; /* Remove left margin */
-        margin-bottom: 10px; /* Add bottom margin */
-        width: 100%; /* Full width for list items */
+        margin: 10px;
+        width: 100%; /* Full width for better mobile layout */
+        text-align: center;
     }
 
     .navbar-menu a {
-        color: #0039A6;
-        display: block; /* Make links full width */
-        padding: 10px 0; /* Add padding for touch targets */
+        color: #fafafa;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        padding: 10px 15px;
+        white-space: nowrap;
+        width: 100%;
     }
 
     .navbar-menu a span {
-        margin-right: 10px; /* Add space between icon and text */
-    }
-
-    .navbar-menu a:hover {
-        background-color: #f0f0f0; /* Add hover background */
-    }
-
-    .hero {
-        padding: 50px 0;
-    }
-
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .hero p {
-        font-size: 16px;
-    }
-
-    .container {
-        width: 90%;
+        margin-right: 5px;
     }
 }
